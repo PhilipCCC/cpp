@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Person
+{
+	char *nameptr;
+	int age;
+	bool sex;
+public:
+	Person(char *p,int age,bool sex);
+	~Person();
+	void display();
+	
+};
+Person::Person(char *p,int a,bool s){
+	nameptr = new char[strlen(p)+1];
+	strcpy(nameptr,p);
+	age = a;
+	sex = s;
+}
+Person::~Person(){
+	delete[] nameptr;
+}
+void Person::display(){
+	if(sex){
+		cout<<nameptr<<",Men,"<<age<<endl;
+	}else{
+		cout<<nameptr<<",Women"<<age<<endl;
+	}
+}
+int main()
+{
+	Person pps1("Wang Fang",20,true);
+	pps1.display();
+	return 0;
+}
